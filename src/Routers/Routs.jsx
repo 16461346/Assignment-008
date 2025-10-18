@@ -24,7 +24,9 @@ export const router=createBrowserRouter([
         },
         {
             path: "/apps",
-            element: <Apps></Apps>
+            element: <Apps></Apps>, 
+            hydrateFallbackElement: <Loader/>,
+            loader: ()=> fetch('mainData.json')
         },
         {
             path: "/installation",

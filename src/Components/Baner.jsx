@@ -5,7 +5,7 @@ import hero from '../assets/hero.png'
 const Baner = () => {
     return (
         <div className="pt-8 bg-base-200 min-h-screen">
-            <div className="hero-content text-center">
+            <div className="hero-content max-w-full sm:max-w-xl md:max-w-3xl lg:max-w-6xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div className="max-w-3xl">
                     <h1 className="text-5xl font-extrabold">We Build <br />
                         <span className='bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent '> Productive</span> Apps</h1>
@@ -21,14 +21,13 @@ const Baner = () => {
             <div className='flex justify-center mt-4'>
                 <img src={hero} alt="" />
             </div>
-            <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-gradient-to-r from-[#632EE3] to-[#9F62F2] py-16 text-center text-white overflow-hidden">
+            <div className="bg-gradient-to-r from-[#632EE3] to-[#9F62F2] py-16 text-center text-white overflow-hidden max-w-full mx-auto">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">
                     Trusted By Millions, Built For You
                 </h2>
-
                 <div className="flex flex-col md:flex-row justify-center items-center gap-10 px-6 md:px-0">
                     <div>
-                         <p className='text-gray-200'>Total Downloads</p>
+                        <p className='text-gray-200'>Total Downloads</p>
                         <h3 className="text-3xl md:text-4xl font-extrabold">29.6M</h3>
                         <p className="text-sm opacity-80">21% More Than Last Month</p>
                     </div>
@@ -44,6 +43,7 @@ const Baner = () => {
                     </div>
                 </div>
             </div>
+
 
 
         </div>
