@@ -75,14 +75,16 @@ const DetailsPage = () => {
                             </div>
 
                             <button
-                                className={`btn btn-primary mt-4 w-full lg:w-1/3 text-white ${
-                                    installed ? 'cursor-not-allowed opacity-50' : 'hover:opacity-90'
-                                }`}
+                                className={`btn btn-primary mt-4 w-full lg:w-1/3 text-white ${installed
+                                        ? 'bg-gray-500 text-white cursor-not-allowed hover:opacity-100'
+                                        : 'bg-gradient-to-r from-[#632EE3] to-[#9F62F2] hover:opacity-90'
+                                    }`}
                                 onClick={() => handleInstall(parsid)}
                                 disabled={installed}
                             >
                                 {installed ? 'Installed' : `Install Now (${size} MB)`}
                             </button>
+
                         </div>
                     </div>
 
