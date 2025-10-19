@@ -15,7 +15,7 @@ export const router=createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children:[
         {
-            path:'/',
+            index:true,
             element: <Home></Home>,
             hydrateFallbackElement: <Loader/>,
             loader:()=> fetch('/primaryData.json')
