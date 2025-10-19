@@ -21,12 +21,12 @@ const Installation = () => {
     const handaleSort = (type) => {
         setSort(type);
 
-        if (type === "rating") {
-            const sortedByRating = [...myInstallation].sort((a, b) => b.ratingAvg - a.ratingAvg);
+        if (type === "HighLow") {
+            const sortedByRating = [...myInstallation].sort((a, b) => b.downloads - a.downloads);
             setMyInstallation(sortedByRating);
         }
-        else if (type === "downloads") {
-            const sortedByDownloads = [...myInstallation].sort((a, b) => b.downloads - a.downloads);
+        else if (type === "LowHigh") {
+            const sortedByDownloads = [...myInstallation].sort((a, b) => a.downloads - b.downloads);
             setMyInstallation(sortedByDownloads);
         }
         else {
@@ -57,8 +57,8 @@ const Installation = () => {
                     <details className="dropdown">
                         <summary className="btn m-1">Sort by: {sort ? sort : "Select"}</summary>
                         <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                            <li><a onClick={() => handaleSort('rating')}>Most Rated</a></li>
-                            <li><a onClick={() => handaleSort('downloads')}>Most Downloaded</a></li>
+                            <li><a onClick={() => handaleSort('High-Low')}>High-Low</a></li>
+                            <li><a onClick={() => handaleSort('Low-High')}>Low-High</a></li>
                         </ul>
                     </details>
                 </div>
