@@ -76,8 +76,8 @@ const DetailsPage = () => {
 
                             <button
                                 className={`btn btn-primary mt-4 w-full lg:w-1/3 text-white ${installed
-                                        ? 'bg-gray-500 text-white cursor-not-allowed hover:opacity-100'
-                                        : 'bg-gradient-to-r from-[#632EE3] to-[#9F62F2] hover:opacity-90'
+                                    ? 'bg-gray-500 text-white cursor-not-allowed hover:opacity-100'
+                                    : 'bg-gradient-to-r from-[#632EE3] to-[#9F62F2] hover:opacity-90'
                                     }`}
                                 onClick={() => handleInstall(parsid)}
                                 disabled={installed}
@@ -95,16 +95,22 @@ const DetailsPage = () => {
                             <BarChart
                                 data={sortedRatings}
                                 layout="vertical"
-                                margin={{ top: 20, right: 30, left: 50, bottom: 20 }}
+                                margin={{ top: 20, right: 20, left: 10, bottom: 20 }}
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis type="number" />
-                                <YAxis dataKey="name" type="category" reversed width={80} />
+                                <YAxis
+                                    dataKey="name"
+                                    type="category"
+                                    width={window.innerWidth < 500 ? 40 : 80} 
+                                    reversed
+                                />
                                 <Tooltip />
                                 <Bar dataKey="count" fill="#632EE3" barSize={25} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
+
 
                     {/* Description Section */}
                     <div className="mt-10 bg-gray-50 p-6 rounded-lg shadow-md">
