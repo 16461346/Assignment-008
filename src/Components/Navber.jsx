@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../assets/logo.png'
 import { BsGithub } from "react-icons/bs";
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navber = () => {
     return (
@@ -14,10 +14,11 @@ const Navber = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><Link to={'/'}>Home</Link></li>
+                        <li><Link to={'/home'}>Home</Link></li>
                         <li><Link to={'/apps'}>Apps</Link></li>
                         <li><Link to={'/installation'}>Installation</Link></li>
                     </ul>
+
                 </div>
                 <Link to={'/'} className="flex cursor-pointer items-center justify-center text-xl">
                     <img className='w-[40px]' src={logo} alt="logo" /><span className="bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent font-bold">
@@ -28,15 +29,37 @@ const Navber = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li>
-                        <Link to={'/'}>Home</Link>
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) =>
+                                isActive ? "border-b-2 border-blue-500" : ""
+                            }
+                        >
+                            Home
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to={'/apps'}>Apps</Link>
+                        <NavLink
+                            to="/apps"
+                            className={({ isActive }) =>
+                                isActive ? "border-b-2 border-blue-500" : ""
+                            }
+                        >
+                            Apps
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to={'/installation'}>Installation</Link>
+                        <NavLink
+                            to="/installation"
+                            className={({ isActive }) =>
+                                isActive ? "border-b-2 border-blue-500" : ""
+                            }
+                        >
+                            Installation
+                        </NavLink>
                     </li>
                 </ul>
+                            
             </div>
             <div className="navbar-end">
                 <Link to={'https://github.com/16461346'} className="w-[145px] btn h-[43px] bg-gradient-to-r text-white from-[#632EE3] to-[#9F62F2]"><span><BsGithub /></span> Contribute</Link>

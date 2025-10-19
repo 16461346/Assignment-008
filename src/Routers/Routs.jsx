@@ -1,13 +1,12 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router';
-import Navber from '../Components/Navber';
-import Footer from '../Components/Footer';
 import Root from '../Root/Root';
 import ErrorPage from '../Pages/ErrorPage';
 import Home from '../Pages/Home';
 import Apps from '../Pages/Apps';
 import Installation from '../Pages/Installation';
 import Loader from '../Pages/Loader';
+import DetailsPage from '../Pages/DetailsPage';
 
 export const router=createBrowserRouter([
  {
@@ -16,21 +15,26 @@ export const router=createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children:[
         {
-            path:'/',
             index:true,
             element: <Home></Home>,
             hydrateFallbackElement: <Loader/>,
-            loader:()=> fetch('primaryData.json')
+            loader:()=> fetch('/primaryData.json')
         },
         {
             path: "/apps",
             element: <Apps></Apps>, 
             hydrateFallbackElement: <Loader/>,
-            loader: ()=> fetch('mainData.json')
+            loader: ()=> fetch('/mainData.json')
         },
         {
             path: "/installation",
             element:<Installation></Installation>
+        },
+        {
+            path:'/detailsPage/:clickid',
+            hydrateFallbackElement: <Loader/>,
+            element:<DetailsPage></DetailsPage>,
+            loader:()=>fetch('/mainData.json')
         }
     ]
  }
