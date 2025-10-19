@@ -28,7 +28,9 @@ export const router=createBrowserRouter([
         },
         {
             path: "/installation",
-            element:<Installation></Installation>
+            element:<Installation></Installation>,
+            
+             loader: ()=> fetch('/mainData.json')
         },
         {
             path:'/detailsPage/:clickid',

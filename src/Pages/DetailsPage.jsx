@@ -1,31 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import img1 from '../assets/icon-downloads.png';
 import img2 from '../assets/icon-ratings.png';
 import img3 from '../assets/icon-review.png';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addToStorageDB, getApp } from '../Hooks/AddToDN';
 
 const DetailsPage = () => {
     const data = useLoaderData();
     const { clickid } = useParams();
     const parsid = parseInt(clickid);
+
     const singleApp = data.find(app => app.id === parsid);
     const { title, image, companyName, description, size, reviews, ratingAvg, downloads } = singleApp;
 
-    // State for Install Button
+    // state to track if app is installed
     const [installed, setInstalled] = useState(false);
 
-    const handleInstall = () => {
-        setInstalled(true);
+    // check on page load if app is already installed
+    useEffect(() => {
+        const installedApps = getApp();
+        if (installedApps.includes(parsid)) {
+            setInstalled(true);
+        }
+    }, [parsid]);
+
+    const handleInstall = id => {
+        addToStorageDB(id);        // save to localStorage
+        setInstalled(true);        // update button state
         toast.success('App Installed Successfully!', {
             position: "top-center",
             autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
             theme: "light",
             transition: Bounce,
         });
@@ -45,11 +51,12 @@ const DetailsPage = () => {
                         </p>
                         <hr />
                     </div>
+
                     <div className='flex gap-10 py-7'>
                         <span>
                             <img src={img1} alt="download img" />
                             <p>Downloads</p>
-                            <h2>{downloads}</h2>
+                            <h2>{downloads}M+</h2>
                         </span>
                         <span>
                             <img src={img2} alt="rating img" />
@@ -65,15 +72,15 @@ const DetailsPage = () => {
 
                     <button
                         className={`btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white 
-                        ${installed ? 'cursor-not-allowed' : ''}`}
-                        onClick={handleInstall}
+                        ${installed ? 'cursor-not-allowed opacity-50' : 'hover:opacity-90'}`}
+                        onClick={() => handleInstall(parsid)}
                         disabled={installed}
                     >
                         {installed ? 'Installed' : `Install Now (${size} MB)`}
                     </button>
                 </div>
             </div>
-            
+
             <ToastContainer />
         </>
     );

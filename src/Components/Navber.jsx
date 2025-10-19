@@ -59,7 +59,7 @@ const Navber = () => {
                         </NavLink>
                     </li>
                 </ul>
-                            
+
             </div>
             <div className="navbar-end">
                 <Link to={'https://github.com/16461346'} className="w-[145px] btn h-[43px] bg-gradient-to-r text-white from-[#632EE3] to-[#9F62F2]"><span><BsGithub /></span> Contribute</Link>
